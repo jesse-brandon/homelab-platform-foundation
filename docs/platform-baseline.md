@@ -141,10 +141,9 @@ Linux carbon 6.17.2-1-pve #1 SMP PREEMPT_DYNAMIC PMX 6.17.2-1 (2025-10-21T11:55Z
 
 Document significant infrastructure changes here.
 
-Example:
-
 ```
 2026-02-17 — Initial platform baseline documented.
+2026-02-18 - SSH Hardening
 ```
 
 ---
@@ -163,4 +162,109 @@ It should be updated whenever:
 - Proxmox is upgraded  
 - Kernel version changes  
 - Network topology changes  
-- Core infrastructure services are modified  
+- Core infrastructure services are modified 
+
+---
+
+## 🔐 SSH Hardening
+
+SSH access configured for key-based authentication only.
+
+### Configuration
+
+File modified:
+
+```
+/etc/ssh/sshd_config
+```
+
+Settings:
+
+```
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+```
+
+### Result
+
+- Root login allowed via SSH key only
+- Password authentication disabled
+- Reduced brute-force attack surface
+- Enforced secure administrative access
+
+### Validation
+
+From workstation:
+
+```powershell
+ssh root@10.10.0.13
+```
+
+Successful login without password prompt.
+
+Password-only attempt should fail:
+
+```powershell
+ssh -o PreferredAuthentications=password root@10.10.0.13
+```
+
+---
+
+## 👤 Administrative User Configuration
+
+A non-root administrative user was created for daily operations.
+
+### User
+
+```
+Username: jesse
+Groups: sudo, users
+```
+
+### Purpose
+
+- Prevent direct root usage for routine operations
+- Enforce principle of least privilege
+- Maintain root as emergency access account
+
+---
+
+## 🔐 SSH Access Model
+
+### Root
+
+- SSH key authentication only
+- Password login disabled
+- Intended for emergency or system-level operations
+
+### Admin User (jesse)
+
+- SSH key authentication
+- Member of sudo group
+- Default SSH alias target
+
+Example:
+
+```powershell
+ssh carbon
+```
+
+Privilege escalation:
+
+```bash
+sudo <command>
+```
+
+---
+
+## Security Posture
+
+- PasswordAuthentication disabled
+- PermitRootLogin prohibit-password
+- Key-based authentication enforced
+- No shared credentials
+- Explicit SSH identity file configured
+
+---
+
+This establishes a secure and reproducible administrative access model.
