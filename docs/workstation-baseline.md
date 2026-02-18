@@ -323,3 +323,80 @@ ssh carbon
 
 SSH authentication is key-based only.
 Password login is disabled on the Proxmox host.
+
+---
+
+# 🐍 Python Runtime Configuration
+
+## Purpose
+
+Python provides:
+
+- Automation scripting
+- Infrastructure tooling support
+- Data engineering experimentation
+- Future Terraform + cloud integration utilities
+
+Python is installed system-wide and used intentionally with virtual environments.
+
+---
+
+## 📦 Installation
+
+- **Version:** 3.13.12 (64-bit)
+- **Source:** https://www.python.org/downloads/windows/
+- Installed with:
+  - Add to PATH enabled
+  - Installed for all users
+  - Long path support enabled
+
+Verify:
+
+```powershell
+python --version
+pip --version
+```
+
+Recorded:
+
+- Python 3.13.12
+- pip 25.3
+
+---
+
+## 🧪 Virtual Environment Strategy
+
+Per-project virtual environments are used.
+
+Example:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\activate
+```
+
+Rationale:
+
+- Avoid global dependency pollution
+- Maintain reproducibility
+- Keep workstation Python clean
+
+Global Python installation is reserved for base tooling only.
+
+---
+
+## 🔎 Validation
+
+Tested:
+
+```powershell
+python -m venv test-env
+```
+
+Virtual environment creation successful.
+
+---
+
+## 📅 Last Reviewed
+
+2026-02-17
