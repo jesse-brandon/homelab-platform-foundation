@@ -46,6 +46,7 @@ homelab-platform-foundation/
 ├── README.md
 └── docs/
     ├── apt-caching.md
+    ├── github-ssh-setup.md
     ├── network-topology.md
     ├── rebuild.md
     ├── workstation-baseline.md
@@ -58,6 +59,9 @@ homelab-platform-foundation/
 
 - **apt-caching.md**  
   Containerized internal APT caching infrastructure.
+
+- **github-ssh-setup.md**
+  Support multiple GitHub identities using separate SSH keys and host aliases.
 
 - **network-topology.md**  
   Subnet design, routing decisions, and architectural layout.
