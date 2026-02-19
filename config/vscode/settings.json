@@ -1,0 +1,49 @@
+{
+  // ----------------------------------------
+  // General Editor Discipline
+  // ----------------------------------------
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.renderWhitespace": "boundary",
+
+  // ----------------------------------------
+  // Python
+  // ----------------------------------------
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "python.testing.pytestEnabled": true,
+  "python.terminal.activateEnvironment": true,
+
+  // ----------------------------------------
+  // Import Management
+  // ----------------------------------------
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  // ----------------------------------------
+  // Terraform
+  // ----------------------------------------
+  "terraform.format.enable": true,
+
+  // ----------------------------------------
+  // YAML
+  // ----------------------------------------
+  "yaml.validate": true,
+  "yaml.format.enable": true,
+
+  // ----------------------------------------
+  // Git
+  // ----------------------------------------
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  // ----------------------------------------
+  // Explorer
+  // ----------------------------------------
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false
+}
